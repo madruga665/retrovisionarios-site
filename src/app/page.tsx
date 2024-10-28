@@ -1,5 +1,6 @@
 import { LinkButton } from '@/components/link-button/linkButton';
 import { ProfileImage } from '@/components/profile-image/profileImage';
+import { Calendar } from '@/components/calendar/calendar'
 
 export default function Home() {
   return (
@@ -29,6 +30,9 @@ export default function Home() {
           icon="/images/icons/facebook.svg"
           label="Facebook"
         />
+      </div>
+      <div className="w-full py-8 flex flex-col items-center justify-center gap-8">
+        <Calendar />
       </div>
     </main>
   );
