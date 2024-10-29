@@ -1,26 +1,8 @@
 import { LinkButton } from '@/components/link-button/linkButton';
 import { ProfileImage } from '@/components/profile-image/profileImage';
-import { Calendar } from '@/components/calendar/calendar'
-
+import { Calendar } from '@/components/calendar/calendar';
+import { socialContent } from '@/socialContent';
 export default function Home() {
-  const buttonsContent = [
-    {
-      url: "https://www.youtube.com/@Retrovisionarios1986",
-      icon: "/images/icons/youtube.svg",
-      label: "YouTube"
-    },
-    {
-      url: "https://www.instagram.com/retrovisionarios1986",
-      icon: "/images/icons/instagram.svg",
-      label: "Instagram"
-    },
-    {
-      url: "https://www.facebook.com/profile.php?id=61558180019563",
-      icon: "/images/icons/facebook.svg",
-      label: "Facebook"
-    }
-  ];
-
   return (
     <main className="px-2 sm:px-10">
       <div className="w-full gap-8 p-4 mt-10 flex flex-col items-center justify-center">
@@ -33,7 +15,7 @@ export default function Home() {
       </div>
 
       <div className="w-full py-8 flex flex-col items-center justify-center gap-8">
-        {buttonsContent.map(({ url, icon, label }) => {
+        {socialContent.map(({ url, icon, label }) => {
           return <LinkButton key={label} url={url} icon={icon} label={label} />
         })}
       </div>
