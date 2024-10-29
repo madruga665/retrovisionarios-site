@@ -2,6 +2,7 @@ import { LinkButton } from '@/components/link-button/linkButton';
 import { ProfileImage } from '@/components/profile-image/profileImage';
 import { Calendar } from '@/components/calendar/calendar';
 import { socialContent } from '@/socialContent';
+
 export default function Home() {
   return (
     <main className="px-2 sm:px-10">
