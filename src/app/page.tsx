@@ -19,7 +19,8 @@ export default function Home() {
       icon:"/images/icons/facebook.svg",
       label:"Facebook"
     }
-  ]
+  ];
+
   return (
     <main className="px-2 sm:px-10">
       <div className="w-full gap-8 p-4 mt-10 flex flex-col items-center justify-center">
@@ -33,9 +34,8 @@ export default function Home() {
 
       <div className="w-full py-8 flex flex-col items-center justify-center gap-8">
         {buttonsContent.map(({url, icon, label}) => {
-          return <LinkButton url={url} icon={icon} label={label} />
-         })
-        }
+          return <LinkButton key={label} url={url} icon={icon} label={label} />
+        })}
       </div>
 
       <div className="w-full py-8 flex flex-col items-center justify-center gap-8">
