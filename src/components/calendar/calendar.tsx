@@ -1,18 +1,24 @@
-import Image from 'next/image';
+import { Event } from '../event/Event';
 
 export function Calendar() {
+  type Event = {
+    date: string;
+    name: string;
+    isCompleted: boolean;
+  };
+
+  const EventsList: Event[] = [
+    { date: '17/11/24', name: 'Vega Rock Day (Evento Fechado)', isCompleted: true },
+    { date: '08/12/24', name: 'Moto Club Cães do Litoral', isCompleted: true },
+  ];
+
   return (
     <div className="flex flex-col gap-4">
-      <h2 className="text-3xl font-bold">Agenda</h2>
+      <h2 className="text-3xl font-bold">Agenda 2024</h2>
       <ul>
-        <li className="flex gap-1 line-through">
-          <Image src="/images/icons/calendar.png" alt="Calendar icon" width={20} height={20} />
-          <p>17/11/24 - Vega Rock Day (Evento Fechado)</p>
-        </li>
-        <li className='flex gap-1'>
-          <Image src="/images/icons/calendar.png" alt="Calendar icon" width={20} height={20} />
-          <p>08/12/24 - Moto Club Cães do Litoral</p>
-        </li>
+        {EventsList.map(({ date, name, isCompleted }) => (
+          <Event date={date} name={name} key={date + name} isCompleted={isCompleted} />
+        ))}
       </ul>
     </div>
   );
