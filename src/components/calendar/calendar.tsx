@@ -4,6 +4,7 @@ export function Calendar() {
   type Event = {
     date: string;
     name: string;
+    flyer?: string;
   };
 
   function isCompleted(dateString: string): boolean {
@@ -17,18 +18,24 @@ export function Calendar() {
 
   const EventsList: Event[] = [
     { date: '07/06/25', name: 'Jamel Studio' },
-    { date: '27/06/25', name: 'The Olds' },
-    { date: '12/07/25', name: 'Moto Club Ovelhas Desgarradas' },
+    { date: '27/06/25', name: 'The Olds', flyer: '/images/events/the-olds-27-06-25.jpeg' },
+    { date: '12/07/25', name: 'Moto Club Ovelhas Desgarradas', flyer: '/images/events/ovelhas-desgarradas-12-07-25.jpeg' },
   ];
 
   return (
-    <div className="flex flex-col gap-4">
+    <section className="flex flex-col gap-4">
       <h2 className="text-3xl font-bold">Agenda 2025</h2>
-      <ul>
-        {EventsList.map(({ date, name }) => (
-          <Event date={date} name={name} key={date + name} isCompleted={isCompleted(date)} />
+      <div className="flex flex-col gap-4">
+        {EventsList.map(({ date, name, flyer }) => (
+          <Event
+            date={date}
+            name={name}
+            key={date + name}
+            isCompleted={isCompleted(date)}
+            flyer={flyer}
+          />
         ))}
-      </ul>
-    </div>
+      </div>
+    </section>
   );
 }
