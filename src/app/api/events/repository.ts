@@ -21,3 +21,9 @@ export async function createEventRepository(event: EventBody): Promise<Event> {
 
   return createdEvent;
 }
+
+export async function deleteEventRepository(id: number): Promise<void> {
+  await prisma.events.delete({
+    where: { id },
+  });
+}

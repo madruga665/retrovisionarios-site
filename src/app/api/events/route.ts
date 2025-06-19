@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { createEvent, getAllEvents } from './service';
+import { createEvent, deleteEvent, getAllEvents } from './service';
 
 export async function GET() {
   const events = await getAllEvents();
@@ -17,9 +17,9 @@ export async function POST(request: Request) {
   try {
     const body: EventBody = await request.json();
 
-    if (!body.name || !body.date || !body.flyer) {
+    if (!body.name || !body.date) {
       return NextResponse.json(
-        { error: 'Missing required fields: name, date, flyer' },
+        { error: 'Missing required fields: name, date' },
         { status: 400 }
       );
     }
@@ -32,6 +32,26 @@ export async function POST(request: Request) {
     );
   } catch {
     return NextResponse.json({ error: 'Failed to create event' }, { status: 500 });
+  }
+}
+
+export async function DELETE(request: Request) {
+  try {
+    const body = await request.json();
+    const id = parseInt(body.id);
+
+    if (isNaN(id)) {
+      return NextResponse.json({ error: 'Invalid event ID' }, { status: 400 });
+    }
+
+    await deleteEvent(id);
+
+    return NextResponse.json(
+      { message: 'Event deleted successfully' },
+      { status: 200 }
+    );
+  } catch {
+    return NextResponse.json({ error: 'Failed to delete event' }, { status: 500 });
   }
 }
 
