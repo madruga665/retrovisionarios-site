@@ -1,4 +1,4 @@
-import { Event } from '@/app/@types/Event';
+import { Event } from '@/app/types/Event';
 import { EventComponent } from '../event/EventComponent';
 
 type CalendarProps = {

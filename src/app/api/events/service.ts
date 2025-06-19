@@ -1,4 +1,4 @@
-import { Event } from "@/app/@types/Event";
+import { Event } from "@/app/types/Event";
 import { getAllEventsRepository } from "./repository";
 
 export async function getAllEvents(): Promise<Event[]> {
