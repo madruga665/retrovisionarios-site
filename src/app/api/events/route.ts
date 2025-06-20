@@ -37,8 +37,8 @@ export async function POST(request: Request) {
 
 export async function DELETE(request: Request) {
   try {
-    const body = await request.json();
-    const id = parseInt(body.id);
+    const url = new URL(request.url);
+    const id = parseInt(url.searchParams.get('id') || '', 10);
 
     if (isNaN(id)) {
       return NextResponse.json({ error: 'Invalid event ID' }, { status: 400 });
