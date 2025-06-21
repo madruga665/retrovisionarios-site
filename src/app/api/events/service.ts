@@ -4,6 +4,7 @@ import {
   deleteEventRepository,
   getAllEventsRepository,
   getEventByIdRepository,
+  updateEventRepository,
 } from './repository';
 import { EventBody } from './route';
 
@@ -29,4 +30,10 @@ export async function deleteEvent(id: number): Promise<Event> {
   const deletedEvent = await deleteEventRepository(id);
 
   return deletedEvent;
+}
+
+export async function updateEvent(id: number, event: EventBody): Promise<Event> {
+  const updatedEvent = await updateEventRepository(id, event);
+
+  return updatedEvent;
 }

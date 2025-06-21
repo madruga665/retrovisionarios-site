@@ -37,3 +37,12 @@ export async function deleteEventRepository(id: number): Promise<Event> {
 
   return deletedEvent;
 }
+
+export async function updateEventRepository(id: number, event: EventBody): Promise<Event> {
+  const updatedEvent = await prisma.events.update({
+    where: { id },
+    data: { ...event },
+  });
+
+  return updatedEvent;
+}
