@@ -1,5 +1,10 @@
 import { Event } from '@/app/types/Event';
-import { createEventRepository, deleteEventRepository, getAllEventsRepository } from './repository';
+import {
+  createEventRepository,
+  deleteEventRepository,
+  getAllEventsRepository,
+  getEventByIdRepository,
+} from './repository';
 import { EventBody } from './route';
 
 export async function getAllEvents(): Promise<Event[]> {
@@ -8,10 +13,20 @@ export async function getAllEvents(): Promise<Event[]> {
   return events;
 }
 
-export async function createEvent(event: EventBody): Promise<void> {
-  await createEventRepository(event);
+export async function getEventById(id: number): Promise<Event | null> {
+  const event = await getEventByIdRepository(id);
+
+  return event;
 }
 
-export async function deleteEvent(id: number): Promise<void> {
-  await deleteEventRepository(id);
+export async function createEvent(event: EventBody): Promise<Event> {
+  const createdEvent = await createEventRepository(event);
+
+  return createdEvent;
+}
+
+export async function deleteEvent(id: number): Promise<Event> {
+  const deletedEvent = await deleteEventRepository(id);
+
+  return deletedEvent;
 }

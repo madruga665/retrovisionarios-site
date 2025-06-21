@@ -1,14 +1,17 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createEvent, getAllEvents } from './service';
 
-
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
 export async function GET() {
-  const events = await getAllEvents();
+  try {
+    const events = await getAllEvents();
 
-  return NextResponse.json(events);
+    return NextResponse.json(events, { status: 200 });
+  } catch {
+    return NextResponse.json({ error: 'Failed to fetch events' }, { status: 500 });
+  }
 }
 
 export type EventBody = {
@@ -22,16 +25,13 @@ export async function POST(request: NextRequest) {
     const body: EventBody = await request.json();
 
     if (!body.name || !body.date) {
-      return NextResponse.json(
-        { error: 'Missing required fields: name, date' },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: 'Missing required fields: name, date' }, { status: 400 });
     }
 
-    await createEvent(body);
+    const createdEvent = await createEvent(body);
 
     return NextResponse.json(
-      { message: 'Event created successfully', data: body },
+      { message: 'Event created successfully', event: createdEvent },
       { status: 201 }
     );
   } catch {
