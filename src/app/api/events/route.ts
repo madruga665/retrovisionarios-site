@@ -1,5 +1,9 @@
-import { NextResponse } from 'next/server';
-import { createEvent, deleteEvent, getAllEvents } from './service';
+import { NextRequest, NextResponse } from 'next/server';
+import { createEvent, getAllEvents } from './service';
+
+
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 export async function GET() {
   const events = await getAllEvents();
@@ -13,7 +17,7 @@ export type EventBody = {
   flyer: string;
 };
 
-export async function POST(request: Request) {
+export async function POST(request: NextRequest) {
   try {
     const body: EventBody = await request.json();
 
@@ -34,26 +38,3 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: 'Failed to create event' }, { status: 500 });
   }
 }
-
-export async function DELETE(request: Request) {
-  try {
-    const url = new URL(request.url);
-    const id = parseInt(url.searchParams.get('id') || '', 10);
-
-    if (isNaN(id)) {
-      return NextResponse.json({ error: 'Invalid event ID' }, { status: 400 });
-    }
-
-    await deleteEvent(id);
-
-    return NextResponse.json(
-      { message: 'Event deleted successfully' },
-      { status: 200 }
-    );
-  } catch {
-    return NextResponse.json({ error: 'Failed to delete event' }, { status: 500 });
-  }
-}
-
-export const dynamic = 'force-dynamic';
-export const revalidate = 0;
