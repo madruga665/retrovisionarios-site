@@ -5,6 +5,16 @@ const nextConfig = {
     // your project has ESLint errors.
     ignoreDuringBuilds: true,
   },
+
+  images: {
+remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: process.env.NEXT_PUBLIC_IMAGES_HOST,
+        pathname: '/**',
+      },
+    ]
+  }
 };
 
 export default nextConfig;

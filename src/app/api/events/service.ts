@@ -11,7 +11,11 @@ import { EventBody } from './route';
 export async function getAllEvents(): Promise<Event[]> {
   const events = await getAllEventsRepository();
 
-  return events;
+  const sortedEventsByDate = events.sort(
+    (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
+  );
+
+  return sortedEventsByDate;
 }
 
 export async function getEventById(id: number): Promise<Event | null> {
