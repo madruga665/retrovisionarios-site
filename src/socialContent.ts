@@ -5,7 +5,7 @@ export const socialContent = [
     label: "YouTube"
   },
   {
-    url: "https://www.instagram.com/retrovisionarios1986",
+    url: "https://www.instagram.com/retrovisionariosoficial",
     icon: "/images/icons/instagram.svg",
     label: "Instagram"
   },
