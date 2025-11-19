@@ -12,8 +12,11 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '20.x'
+      - name: Set env
+        run: echo "NEXT_PUBLIC_IMAGES_HOST=example.com" >> $GITHUB_ENV
       - name: Install dependencies
         run: npm install
-
-      - name: Run lint
+      - name: Run ESLint
         run: npm run lint
+      - name: Run tests
+        run: npm test
