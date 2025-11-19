@@ -10,7 +10,9 @@ export async function getAllEventsRepository(): Promise<Event[]> {
   return events;
 }
 
-export async function getEventByIdRepository(id: number): Promise<Event | null> {
+export async function getEventByIdRepository(
+  id: number
+): Promise<Event | null> {
   const event = await prisma.events.findUnique({
     where: { id },
   });
@@ -38,7 +40,10 @@ export async function deleteEventRepository(id: number): Promise<Event> {
   return deletedEvent;
 }
 
-export async function updateEventRepository(id: number, event: EventBody): Promise<Event> {
+export async function updateEventRepository(
+  id: number,
+  event: EventBody
+): Promise<Event> {
   const updatedEvent = await prisma.events.update({
     where: { id },
     data: { ...event },

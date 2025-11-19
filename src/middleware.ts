@@ -19,7 +19,10 @@ export function middleware(request: NextRequest) {
 
   if (!authHeader || !authHeader.startsWith('Bearer ')) {
     return new NextResponse(
-      JSON.stringify({ success: false, message: 'Authorization header missing or invalid' }),
+      JSON.stringify({
+        success: false,
+        message: 'Authorization header missing or invalid',
+      }),
       { status: 401, headers: { 'content-type': 'application/json' } }
     );
   }
@@ -28,10 +31,13 @@ export function middleware(request: NextRequest) {
   const storedToken = process.env.SERVER_API_TOKEN;
 
   if (!requestToken || !storedToken) {
-    return new NextResponse(JSON.stringify({ success: false, message: 'Token missing' }), {
-      status: 401,
-      headers: { 'content-type': 'application/json' },
-    });
+    return new NextResponse(
+      JSON.stringify({ success: false, message: 'Token missing' }),
+      {
+        status: 401,
+        headers: { 'content-type': 'application/json' },
+      }
+    );
   }
 
   try {
@@ -43,10 +49,13 @@ export function middleware(request: NextRequest) {
 
     return NextResponse.next();
   } catch {
-    return new NextResponse(JSON.stringify({ success: false, message: 'Invalid token' }), {
-      status: 401,
-      headers: { 'content-type': 'application/json' },
-    });
+    return new NextResponse(
+      JSON.stringify({ success: false, message: 'Invalid token' }),
+      {
+        status: 401,
+        headers: { 'content-type': 'application/json' },
+      }
+    );
   }
 }
 

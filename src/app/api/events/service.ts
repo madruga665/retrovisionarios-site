@@ -36,7 +36,10 @@ export async function deleteEvent(id: number): Promise<Event> {
   return deletedEvent;
 }
 
-export async function updateEvent(id: number, event: EventBody): Promise<Event> {
+export async function updateEvent(
+  id: number,
+  event: EventBody
+): Promise<Event> {
   const updatedEvent = await updateEventRepository(id, event);
 
   return updatedEvent;

@@ -21,7 +21,12 @@ export function EventComponent({ date, name, flyer }: EventProps) {
         'flex sm:flex-row flex-col max-w-600 px-4 gap-4 py-2 font-bold border-2 items-center  border-cyan-600 rounded-md'
       }
     >
-      <Image src={flyer ?? '/images/profile-image.jpg'} alt="Flyer" width={300} height={300} />
+      <Image
+        src={flyer ?? '/images/profile-image.jpg'}
+        alt="Flyer"
+        width={300}
+        height={300}
+      />
       <p className="flex flex-wrap">{`${dateString} - ${name}`}</p>
     </div>
   );

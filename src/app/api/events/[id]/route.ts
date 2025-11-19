@@ -7,11 +7,16 @@ export const revalidate = 0;
 function validateFlyerUrl(flyer: string): boolean {
   return (
     typeof flyer === 'string' &&
-    (flyer.startsWith('http://') || flyer.startsWith('https://') || flyer.startsWith('/'))
+    (flyer.startsWith('http://') ||
+      flyer.startsWith('https://') ||
+      flyer.startsWith('/'))
   );
 }
 
-export async function GET(_request: NextRequest, { params }: { params: { id: string } }) {
+export async function GET(
+  _request: NextRequest,
+  { params }: { params: { id: string } }
+) {
   try {
     const { id } = params;
     const eventId = Number(id);
@@ -28,11 +33,17 @@ export async function GET(_request: NextRequest, { params }: { params: { id: str
 
     return NextResponse.json(event, { status: 200 });
   } catch {
-    return NextResponse.json({ error: 'Failed to fetch event' }, { status: 500 });
+    return NextResponse.json(
+      { error: 'Failed to fetch event' },
+      { status: 500 }
+    );
   }
 }
 
-export async function DELETE(_request: NextRequest, { params }: { params: { id: string } }) {
+export async function DELETE(
+  _request: NextRequest,
+  { params }: { params: { id: string } }
+) {
   try {
     const { id } = params;
     const eventId = Number(id);
@@ -48,11 +59,17 @@ export async function DELETE(_request: NextRequest, { params }: { params: { id: 
       { status: 200 }
     );
   } catch {
-    return NextResponse.json({ error: 'Failed to delete event' }, { status: 500 });
+    return NextResponse.json(
+      { error: 'Failed to delete event' },
+      { status: 500 }
+    );
   }
 }
 
-export async function PATCH(request: NextRequest, { params }: { params: { id: string } }) {
+export async function PATCH(
+  request: NextRequest,
+  { params }: { params: { id: string } }
+) {
   try {
     const { id } = params;
     const eventId = Number(id);
@@ -65,7 +82,10 @@ export async function PATCH(request: NextRequest, { params }: { params: { id: st
 
     if (!isValidFlyerUrl) {
       return NextResponse.json(
-        { error: 'Invalid flyer URL. It must start with http://, https://, or /' },
+        {
+          error:
+            'Invalid flyer URL. It must start with http://, https://, or /',
+        },
         { status: 400 }
       );
     }
@@ -77,6 +97,9 @@ export async function PATCH(request: NextRequest, { params }: { params: { id: st
       { status: 200 }
     );
   } catch (error) {
-    return NextResponse.json({ message: 'Failed to update event', error }, { status: 500 });
+    return NextResponse.json(
+      { message: 'Failed to update event', error },
+      { status: 500 }
+    );
   }
 }

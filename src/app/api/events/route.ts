@@ -10,7 +10,10 @@ export async function GET() {
 
     return NextResponse.json(events, { status: 200 });
   } catch {
-    return NextResponse.json({ error: 'Failed to fetch events' }, { status: 500 });
+    return NextResponse.json(
+      { error: 'Failed to fetch events' },
+      { status: 500 }
+    );
   }
 }
 
@@ -25,7 +28,10 @@ export async function POST(request: NextRequest) {
     const body: EventBody = await request.json();
 
     if (!body.name || !body.date) {
-      return NextResponse.json({ error: 'Missing required fields: name, date' }, { status: 400 });
+      return NextResponse.json(
+        { error: 'Missing required fields: name, date' },
+        { status: 400 }
+      );
     }
 
     const createdEvent = await createEvent(body);
@@ -35,6 +41,9 @@ export async function POST(request: NextRequest) {
       { status: 201 }
     );
   } catch {
-    return NextResponse.json({ error: 'Failed to create event' }, { status: 500 });
+    return NextResponse.json(
+      { error: 'Failed to create event' },
+      { status: 500 }
+    );
   }
 }
