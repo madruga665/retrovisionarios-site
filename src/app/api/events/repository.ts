@@ -1,4 +1,4 @@
-import { Event } from '@/app/types/Event';
+import { Event } from '@/app/types/event';
 import { PrismaClient } from '@/generated/client';
 import { EventBody } from './route';
 

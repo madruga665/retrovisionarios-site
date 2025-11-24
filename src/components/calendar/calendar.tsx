@@ -1,5 +1,5 @@
-import { Event } from '@/app/types/Event';
-import { EventComponent } from '../event/EventComponent';
+import { Event } from '@/app/types/event';
+import { EventComponent } from '../event/event-component';
 
 type CalendarProps = {
   events: Event[];

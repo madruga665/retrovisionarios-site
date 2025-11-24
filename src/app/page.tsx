@@ -1,7 +1,7 @@
-import { LinkButton } from '@/components/link-button/linkButton';
-import { ProfileImage } from '@/components/profile-image/profileImage';
+import { LinkButton } from '@/components/link-button/link-button';
+import { ProfileImage } from '@/components/profile-image/profile-image';
 import { Calendar } from '@/components/calendar/calendar';
-import { socialContent } from '@/socialContent';
+import { socialContent } from '@/social-content';
 import { getAllEvents } from './service';
 import { Suspense } from 'react';
 
