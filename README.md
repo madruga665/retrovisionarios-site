@@ -23,7 +23,7 @@ Siga as instruções abaixo para rodar o projeto em seu ambiente local.
 
 ### Pré-requisitos
 
-*   [Node.js](https://nodejs.org/) (versão 20 ou superior)
+*   [Node.js](https://nodejs.org/) (versão 22, conforme `.nvmrc`)
 *   Um banco de dados PostgreSQL em execução.
 
 ### Instalação e Configuração
@@ -40,7 +40,7 @@ Siga as instruções abaixo para rodar o projeto em seu ambiente local.
     ```
 
 3.  **Configure as variáveis de ambiente:**
-    - Renomeie o arquivo `.env.exemple` para `.env`.
+    - Copie o arquivo `.env.exemple` para `.env`.
     - Abra o arquivo `.env` e adicione a URL de conexão do seu banco de dados PostgreSQL:
       ```env
       DATABASE_URL="postgresql://USER:PASSWORD@HOST:PORT/DATABASE"
