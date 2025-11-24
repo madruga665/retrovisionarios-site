@@ -58,7 +58,7 @@ Siga as instruções abaixo para rodar o projeto em seu ambiente local.
 
 ### Rodando o Projeto
 
-Após a instalação, inicie o servidor de desenvolvimento:
+Após a instalação, inicie o projeto:
 
 ```bash
 npm run dev
