@@ -11,7 +11,7 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '20.x'
+          node-version: '22'
       - name: Set env
         run: echo "NEXT_PUBLIC_IMAGES_HOST=example.com" >> $GITHUB_ENV
       - name: Install dependencies
