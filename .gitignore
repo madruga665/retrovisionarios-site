@@ -42,3 +42,4 @@ next-env.d.ts
 # Gemini CLI
 .gemini/*
 !.gemini/config.json
+!.gemini/GEMINI.md
