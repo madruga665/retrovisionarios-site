@@ -1,0 +1,31 @@
+{
+  "project_context": {
+    "name": "Retrovisionários Site",
+    "description": "Plataforma para divulgação e gestão de eventos retro.",
+    "framework": "Next.js (App Router)",
+    "language": "TypeScript"
+  },
+  "tech_stack": {
+    "styling": "Tailwind CSS",
+    "orm": "Prisma",
+    "testing": "Jest + React Testing Library",
+    "icons": "Assets locais em /public/images/icons (evitar libs externas se possível)"
+  },
+  "style_guide": {
+    "file_naming": "kebab-case (ex: event-component.tsx)",
+    "component_structure": "Named export, pasta dedicada para componentes complexos",
+    "imports": "Usar alias '@/' sempre que possível",
+    "function_declaration": "Usar 'function' para funções nomeadas, arrow functions apenas para anônimas"
+  },
+  "commands": {
+    "dev": "npm run dev",
+    "build": "npm run build",
+    "test": "npm run test",
+    "lint": "npm run lint"
+  },
+  "documentation_index": {
+    "arquitetura_backend": "docs/arquitetura-backend.md",
+    "events_route_doc": "docs/events-route-doc.md",
+    "get_events_flow": "docs/get-events-flow.md"
+  }
+}
