@@ -14,6 +14,10 @@ export async function getAllEvents(): Promise<Event[]> {
     }
   );
 
+  if (!response.ok) {
+    throw new Error('Falha ao buscar eventos');
+  }
+
   const { result } = await response.json();
 
   return result;
