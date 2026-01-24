@@ -38,9 +38,3 @@ next-env.d.ts
 /src/generated/client
 
 .env
-
-# Gemini CLI
-.gemini
-.gemini/*
-!.gemini/config.json
-!.gemini/GEMINI.md
