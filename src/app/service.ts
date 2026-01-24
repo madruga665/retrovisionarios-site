@@ -1,18 +1,10 @@
-export async function getAllEvents() {
-  const myToken = process.env.SERVER_API_TOKEN;
+'use server';
 
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_BASE_URL}/v1/events`,
-    {
-      method: 'GET',
-      headers: {
-        Authorization: `Bearer ${myToken}`,
-        'Content-Type': 'application/json',
-      },
-    }
-  );
+import { Event } from './types/event';
+import { getAllEvents as getAllEventsFromService } from '@/app/api/events/service';
 
-  const events = response.json();
+export async function getAllEvents(): Promise<Event[]> {
+  const events = await getAllEventsFromService();
 
   return events;
 }

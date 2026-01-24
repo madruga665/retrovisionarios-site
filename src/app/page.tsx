@@ -1,13 +1,10 @@
 import { LinkButton } from '@/components/link-button/link-button';
 import { ProfileImage } from '@/components/profile-image/profile-image';
-import { Calendar } from '@/components/calendar/calendar';
+import { EventsContainer } from '@/components/calendar/events-container';
 import { socialContent } from '@/social-content';
-import { getAllEvents } from './service';
 import { Suspense } from 'react';
 
 export default async function Home() {
-  const events = await getAllEvents();
-
   return (
     <main className="px-2 sm:px-10">
       <div className="w-full gap-8 p-4 mt-10 flex flex-col items-center justify-center">
@@ -27,7 +24,7 @@ export default async function Home() {
 
       <div className="w-full py-8 flex flex-col items-center justify-center gap-8">
         <Suspense fallback={<p>Carregando eventos...</p>}>
-          <Calendar events={events} />
+          <EventsContainer />
         </Suspense>
       </div>
     </main>
