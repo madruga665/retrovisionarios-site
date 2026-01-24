@@ -4,3 +4,7 @@ export type Event = {
   name: string;
   flyer: string | null;
 };
+
+export type EventResponse = {
+  result: Event[];
+};

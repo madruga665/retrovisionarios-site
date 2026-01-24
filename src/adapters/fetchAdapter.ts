@@ -1,0 +1,26 @@
+export async function fetchAdapter<T>(
+  path: string,
+  options: RequestInit = {}
+): Promise<T> {
+  const baseUrl = process.env.RETROVISIONARIOS_API_BASE_URL;
+  if (!baseUrl) console.warn('⚠️ API Base URL not configured!');
+  const url = `${baseUrl}${path}`;
+
+  const headers = {
+    'Content-Type': 'application/json',
+    ...options.headers,
+  };
+
+  const response = await fetch(url, {
+    ...options,
+    headers,
+  });
+
+  if (!response.ok) {
+    throw new Error(`Error fetching ${path}: ${response.statusText}`);
+  }
+
+  const data = await response.json();
+
+  return data;
+}
