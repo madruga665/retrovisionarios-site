@@ -1,4 +1,4 @@
-import { getAllEvents } from '@/app/service';
+import { getAllEvents } from '@/actions/get-events';
 import { Calendar } from './calendar';
 
 export async function EventsContainer() {
