@@ -1,8 +1,6 @@
 import { LinkButton } from '@/components/link-button/link-button';
 import { ProfileImage } from '@/components/profile-image/profile-image';
-import { EventsContainer } from '@/components/calendar/events-container';
 import { socialContent } from '@/social-content';
-import { Suspense } from 'react';
 
 export default async function Home() {
   return (
@@ -20,12 +18,6 @@ export default async function Home() {
         {socialContent.map(({ url, icon, label }) => {
           return <LinkButton key={label} url={url} icon={icon} label={label} />;
         })}
-      </div>
-
-      <div className="w-full py-8 flex flex-col items-center justify-center gap-8">
-        <Suspense fallback={<p>Carregando eventos...</p>}>
-          <EventsContainer />
-        </Suspense>
       </div>
     </main>
   );
