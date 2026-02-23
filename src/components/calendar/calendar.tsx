@@ -6,23 +6,30 @@ type CalendarProps = {
 };
 
 export function Calendar({ events }: CalendarProps) {
-  return (
-    <section className="flex flex-col gap-4">
-      <div className="flex flex-col gap-4">
-        {events.length > 0 ? (
-          events.map(({ id, date, name, flyer, location }) => (
-            <EventComponent
-              date={date}
-              name={name}
-              key={id}
-              flyer={flyer}
-              location={location}
-            />
-          ))
-        ) : (
-          <p>Sem eventos no momento 😢</p>
-        )}
+  if (events.length === 0) {
+    return (
+      <div className="col-span-full py-20 text-center w-full">
+        <p className="text-retro-muted text-xl font-medium">
+          Não temos eventos agendados no momento. 😢
+        </p>
+        <p className="text-primary font-bold mt-2">
+          Fique atento às nossas redes sociais para novidades!
+        </p>
       </div>
-    </section>
+    );
+  }
+
+  return (
+    <>
+      {events.map(({ id, date, name, flyer, location }) => (
+        <EventComponent
+          date={date}
+          name={name}
+          key={id}
+          flyer={flyer}
+          location={location}
+        />
+      ))}
+    </>
   );
 }

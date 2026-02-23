@@ -14,7 +14,7 @@ export async function getAllEvents(): Promise<Event[]> {
       }
     );
 
-    return response.result;
+    return response?.result || [];
   } catch (error) {
     console.error('Error fetching events:', error);
     return [];
