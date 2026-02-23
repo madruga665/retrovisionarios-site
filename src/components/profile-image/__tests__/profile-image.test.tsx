@@ -6,5 +6,8 @@ describe('ProfileImage', () => {
     render(<ProfileImage />);
     const profileImage = screen.getByTestId('profile-image');
     expect(profileImage).toBeInTheDocument();
+    expect(profileImage).toHaveStyle(
+      "background-image: url('/images/profile-image.jpg')"
+    );
   });
 });

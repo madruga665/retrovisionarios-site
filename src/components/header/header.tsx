@@ -1,95 +1,123 @@
 'use client';
 
-import Link from 'next/link';
 import { useMobileMenu } from '@/hooks/use-mobile-menu';
+import Link from 'next/link';
 
 export function Header() {
   const { isMenuOpen, toggleMenu, closeMenu } = useMobileMenu();
 
+  function handleWhatsAppClick() {
+    const phoneNumber = '5513988191545';
+    const message =
+      'Olá vim pelo site da banda retrovisionarios e queria saber mais sobre o trabalho de vocês';
+    const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+
+    window.open(url, '_blank');
+  }
+
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 px-6 py-4 backdrop-blur-md bg-black/80 border-b-2 border-cyan-600 border-foreground/10">
-      <div className="w-full max-w-5xl mx-auto flex items-center justify-between">
-        <div className="text-xl font-bold tracking-tighter z-50">
-          <Link href="/" onClick={closeMenu}>
-            Retrôvisionários
-          </Link>
-        </div>
+    <header className="sticky top-0 z-50 bg-cream/90 backdrop-blur-md border-b border-vintage-teal/10 px-6 md:px-20 py-4">
+      <div className="max-w-7xl mx-auto flex items-center justify-between whitespace-nowrap">
+        <div className="flex w-full justify-between items-center gap-3">
+          {/* Mobile Overlay Navigation */}
+          {isMenuOpen && (
+            <nav className="fixed inset-0 bg-cream/90 backdrop-blur-md border-b flex flex-col items-center justify-center gap-8 md:hidden h-screen w-screen z-40">
+              <Link
+                href="/"
+                onClick={closeMenu}
+                className="text-2xl font-bold hover:text-foreground/80 transition-colors"
+              >
+                Home
+              </Link>
+              <Link
+                href="/agenda"
+                onClick={closeMenu}
+                className="text-2xl font-bold hover:text-foreground/80 transition-colors"
+              >
+                Agenda
+              </Link>
 
-        {/* Mobile Menu Button */}
-        <button
-          className="md:hidden z-50 p-2"
-          onClick={toggleMenu}
-          aria-label={isMenuOpen ? 'Fechar menu' : 'Abrir menu'}
-        >
-          {isMenuOpen ? (
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <line x1="18" y1="6" x2="6" y2="18"></line>
-              <line x1="6" y1="6" x2="18" y2="18"></line>
-            </svg>
-          ) : (
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <line x1="3" y1="12" x2="21" y2="12"></line>
-              <line x1="3" y1="6" x2="21" y2="6"></line>
-              <line x1="3" y1="18" x2="21" y2="18"></line>
-            </svg>
+              <div className="flex items-center gap-4">
+                <button
+                  className="min-w-[120px] cursor-pointer items-center justify-center rounded-full h-10 px-5 bg-muted-orange text-white text-sm font-bold uppercase tracking-wider hover:brightness-110 transition-all shadow-lg shadow-muted-orange/20"
+                  onClick={handleWhatsAppClick}
+                >
+                  Contato
+                </button>
+              </div>
+            </nav>
           )}
-        </button>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex gap-6">
-          <Link
-            href="/"
-            className="text-sm font-bold hover:text-foreground/80 transition-colors"
-          >
-            Home
+          <Link href="/">
+            <h2 className="text-vintage-teal text-2xl font-bold tracking-tight uppercase">
+              Retrovisionarios
+            </h2>
           </Link>
-          <Link
-            href="/agenda"
-            className="text-sm font-bold hover:text-foreground/80 transition-colors"
-          >
-            Agenda
-          </Link>
-        </nav>
 
-        {/* Mobile Overlay Navigation */}
-        {isMenuOpen && (
-          <nav className="fixed inset-0 backdrop-blur-md bg-black/90 flex flex-col items-center justify-center gap-8 md:hidden h-screen w-screen z-40">
+          {/* Mobile Menu Button */}
+          <button
+            className="md:hidden z-50 p-2"
+            onClick={toggleMenu}
+            aria-label={isMenuOpen ? 'Fechar menu' : 'Abrir menu'}
+          >
+            {isMenuOpen ? (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            ) : (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+              </svg>
+            )}
+          </button>
+        </div>
+        <div className="flex flex-row gap-10">
+          <nav className="hidden md:flex items-center gap-10">
             <Link
+              className="text-slate-700 hover:text-primary transition-colors text-sm font-bold uppercase tracking-widest"
               href="/"
-              onClick={closeMenu}
-              className="text-2xl font-bold hover:text-foreground/80 transition-colors"
             >
               Home
             </Link>
             <Link
+              className="text-slate-700 hover:text-primary transition-colors text-sm font-bold uppercase tracking-widest"
               href="/agenda"
-              onClick={closeMenu}
-              className="text-2xl font-bold hover:text-foreground/80 transition-colors"
             >
               Agenda
             </Link>
           </nav>
-        )}
+          <div className="flex items-center gap-4">
+            <button
+              className="hidden sm:flex min-w-[120px] cursor-pointer items-center justify-center rounded-full h-10 px-5 bg-muted-orange text-white text-sm font-bold uppercase tracking-wider hover:brightness-110 transition-all shadow-lg shadow-muted-orange/20"
+              onClick={handleWhatsAppClick}
+            >
+              Contato
+            </button>
+          </div>
+        </div>
       </div>
     </header>
   );
