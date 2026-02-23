@@ -5,9 +5,10 @@ export async function fetchAdapter<T>(
   const baseUrl = process.env.RETROVISIONARIOS_API_BASE_URL;
   if (!baseUrl) console.warn('⚠️ API Base URL not configured!');
   const url = `${baseUrl}${path}`;
+  const FETCH_TIMEOUT_MS = 8000;
 
   const controller = new AbortController();
-  const id = setTimeout(() => controller.abort(), 8000); // 8 seconds timeout
+  const id = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
 
   const headers = {
     'Content-Type': 'application/json',
@@ -21,8 +22,6 @@ export async function fetchAdapter<T>(
       signal: controller.signal,
     });
 
-    clearTimeout(id);
-
     if (!response.ok) {
       throw new Error(`Error fetching ${path}: ${response.statusText}`);
     }
@@ -31,7 +30,8 @@ export async function fetchAdapter<T>(
 
     return data;
   } catch (error) {
-    clearTimeout(id);
     throw error;
+  } finally {
+    clearTimeout(id);
   }
 }
