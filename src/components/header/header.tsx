@@ -1,9 +1,12 @@
 'use client';
 
 import { useMobileMenu } from '@/hooks/use-mobile-menu';
+import clsx from 'clsx';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 export function Header() {
+  const pathname = usePathname();
   const { isMenuOpen, toggleMenu, closeMenu } = useMobileMenu();
 
   function handleWhatsAppClick() {
@@ -23,16 +26,22 @@ export function Header() {
           {isMenuOpen && (
             <nav className="fixed inset-0 bg-cream/90 backdrop-blur-md border-b flex flex-col items-center justify-center gap-8 md:hidden h-screen w-screen z-40">
               <Link
+                className={clsx(
+                  'text-slate-700 hover:text-primary transition-colors text-sm font-bold uppercase tracking-widest',
+                  pathname === '/' ? 'border-b-2 border-muted-orange' : ''
+                )}
                 href="/"
                 onClick={closeMenu}
-                className="text-2xl font-bold hover:text-foreground/80 transition-colors"
               >
                 Home
               </Link>
               <Link
+                className={clsx(
+                  'text-slate-700 hover:text-primary transition-colors text-sm font-bold uppercase tracking-widest',
+                  pathname === '/agenda' ? 'border-b-2 border-muted-orange' : ''
+                )}
                 href="/agenda"
                 onClick={closeMenu}
-                className="text-2xl font-bold hover:text-foreground/80 transition-colors"
               >
                 Agenda
               </Link>
@@ -94,16 +103,23 @@ export function Header() {
             )}
           </button>
         </div>
+
         <div className="flex flex-row gap-10">
           <nav className="hidden md:flex items-center gap-10">
             <Link
-              className="text-slate-700 hover:text-primary transition-colors text-sm font-bold uppercase tracking-widest"
+              className={clsx(
+                'text-slate-700 hover:text-primary transition-colors text-sm font-bold uppercase tracking-widest',
+                pathname === '/' ? 'border-b-2 border-muted-orange' : ''
+              )}
               href="/"
             >
               Home
             </Link>
             <Link
-              className="text-slate-700 hover:text-primary transition-colors text-sm font-bold uppercase tracking-widest"
+              className={clsx(
+                'text-slate-700 hover:text-primary transition-colors text-sm font-bold uppercase tracking-widest',
+                pathname === '/agenda' ? 'border-b-2 border-muted-orange' : ''
+              )}
               href="/agenda"
             >
               Agenda
