@@ -25,7 +25,9 @@ export default function AgendaPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <Suspense
-            fallback={<p className="text-center">Carregando shows...</p>}
+            fallback={
+              <p className="text-slate-500 text-center">Carregando shows...</p>
+            }
           >
             <EventsContainer />
           </Suspense>

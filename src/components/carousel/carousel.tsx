@@ -17,7 +17,8 @@ export function Carousel({ title, videoMusic }: CarouselProps) {
   const scroll = (direction: 'left' | 'right') => {
     if (scrollRef.current) {
       const { current } = scrollRef;
-      const scrollAmount = scrollRef.current.firstElementChild?.clientWidth;
+      const scrollAmount =
+        (scrollRef.current.firstElementChild as HTMLElement).offsetWidth + 32;
 
       if (scrollAmount) {
         current.scrollBy({

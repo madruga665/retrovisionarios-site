@@ -1,9 +1,7 @@
-import { Carousel } from '@/components/carousel/carousel';
-import { getAllVideos } from '@/services/videos/videos';
+import { VideosContent } from '@/components/videos-content/videos-content';
+import { Suspense } from 'react';
 
 export default async function MusicasPage() {
-  const videos = await getAllVideos();
-
   return (
     <main className="flex-1">
       <div className="px-6 md:px-20 py-12 max-w-7xl mx-auto">
@@ -16,8 +14,13 @@ export default async function MusicasPage() {
           </p>
         </div>
       </div>
-      <Carousel title="Músicas Autorais" videoMusic={videos.originalSong} />
-      <Carousel title="Covers" videoMusic={videos.cover} />
+      <Suspense
+        fallback={
+          <p className="text-slate-500 text-center">Carregando videos...</p>
+        }
+      >
+        <VideosContent />
+      </Suspense>
     </main>
   );
 }
