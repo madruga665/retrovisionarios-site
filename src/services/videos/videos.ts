@@ -10,7 +10,7 @@ export async function getAllVideos(): Promise<VideoResult> {
   try {
     const response = await fetchAdapter<VideoResponse>(`/v1/videos`, {
       method: 'GET',
-      next: { revalidate: 3600 },
+      cache: 'no-store',
     });
 
     return {
