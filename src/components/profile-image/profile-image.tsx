@@ -1,7 +1,7 @@
 export function ProfileImage() {
   return (
     <div className="px-6 md:px-20 py-8 max-w-7xl mx-auto">
-      <div className="relative group grainy-overlay overflow-hidden rounded-2xl shadow-2xl border-4 border-white">
+      <div className="relative group overflow-hidden rounded-2xl shadow-2xl border-4 border-white">
         <div
           data-testid="profile-image"
           className="w-full aspect-[21/9] bg-center bg-no-repeat bg-cover flex flex-col justify-end transition-transform duration-700 group-hover:scale-105"

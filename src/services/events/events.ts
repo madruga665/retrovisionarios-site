@@ -10,7 +10,7 @@ export async function getAllEvents(): Promise<Event[]> {
       `/v1/events?year=${year}`,
       {
         method: 'GET',
-        cache: 'no-store',
+        next: { revalidate: 3600 },
       }
     );
 
