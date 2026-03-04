@@ -5,11 +5,12 @@ import clsx from 'clsx';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
+const navLinkBase =
+  'text-slate-700 hover:text-primary transition-colors text-sm font-bold uppercase tracking-widest';
+
 export function Header() {
   const pathname = usePathname();
   const { isMenuOpen, toggleMenu, closeMenu } = useMobileMenu();
-  const navLinkBase =
-    'text-slate-700 hover:text-primary transition-colors text-sm font-bold uppercase tracking-widest';
 
   function handleWhatsAppClick() {
     const phoneNumber = '5513988191545';
