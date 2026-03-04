@@ -8,6 +8,8 @@ import { usePathname } from 'next/navigation';
 export function Header() {
   const pathname = usePathname();
   const { isMenuOpen, toggleMenu, closeMenu } = useMobileMenu();
+  const navLinkBase =
+    'text-slate-700 hover:text-primary transition-colors text-sm font-bold uppercase tracking-widest';
 
   function handleWhatsAppClick() {
     const phoneNumber = '5513988191545';
@@ -15,6 +17,7 @@ export function Header() {
       'Olá vim pelo site da banda retrovisionarios e queria saber mais sobre o trabalho de vocês';
     const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
+    closeMenu();
     window.open(url, '_blank');
   }
 
@@ -27,7 +30,7 @@ export function Header() {
             <nav className="fixed inset-0 bg-cream/90 backdrop-blur-md border-b flex flex-col items-center justify-center gap-8 md:hidden h-screen w-screen z-40">
               <Link
                 className={clsx(
-                  'text-slate-700 hover:text-primary transition-colors text-sm font-bold uppercase tracking-widest',
+                  navLinkBase,
                   pathname === '/' ? 'border-b-2 border-muted-orange' : ''
                 )}
                 href="/"
@@ -37,7 +40,7 @@ export function Header() {
               </Link>
               <Link
                 className={clsx(
-                  'text-slate-700 hover:text-primary transition-colors text-sm font-bold uppercase tracking-widest',
+                  navLinkBase,
                   pathname === '/agenda' ? 'border-b-2 border-muted-orange' : ''
                 )}
                 href="/agenda"
@@ -47,7 +50,7 @@ export function Header() {
               </Link>
               <Link
                 className={clsx(
-                  'text-slate-700 hover:text-primary transition-colors text-sm font-bold uppercase tracking-widest',
+                  navLinkBase,
                   pathname === '/musicas'
                     ? 'border-b-2 border-muted-orange'
                     : ''
@@ -119,7 +122,7 @@ export function Header() {
           <nav className="hidden md:flex items-center gap-10">
             <Link
               className={clsx(
-                'text-slate-700 hover:text-primary transition-colors text-sm font-bold uppercase tracking-widest',
+                navLinkBase,
                 pathname === '/' ? 'border-b-2 border-muted-orange' : ''
               )}
               href="/"
@@ -128,7 +131,7 @@ export function Header() {
             </Link>
             <Link
               className={clsx(
-                'text-slate-700 hover:text-primary transition-colors text-sm font-bold uppercase tracking-widest',
+                navLinkBase,
                 pathname === '/agenda' ? 'border-b-2 border-muted-orange' : ''
               )}
               href="/agenda"
@@ -137,7 +140,7 @@ export function Header() {
             </Link>
             <Link
               className={clsx(
-                'text-slate-700 hover:text-primary transition-colors text-sm font-bold uppercase tracking-widest',
+                navLinkBase,
                 pathname === '/musicas' ? 'border-b-2 border-muted-orange' : ''
               )}
               href="/musicas"
