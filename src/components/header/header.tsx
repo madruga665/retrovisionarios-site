@@ -45,7 +45,17 @@ export function Header() {
               >
                 Agenda
               </Link>
-
+              <Link
+                className={clsx(
+                  'text-slate-700 hover:text-primary transition-colors text-sm font-bold uppercase tracking-widest',
+                  pathname === '/musicas'
+                    ? 'border-b-2 border-muted-orange'
+                    : ''
+                )}
+                href="/musicas"
+              >
+                Músicas
+              </Link>
               <div className="flex items-center gap-4">
                 <button
                   className="min-w-[120px] cursor-pointer items-center justify-center rounded-full h-10 px-5 bg-muted-orange text-white text-sm font-bold uppercase tracking-wider hover:brightness-110 transition-all shadow-lg shadow-muted-orange/20"
@@ -123,6 +133,15 @@ export function Header() {
               href="/agenda"
             >
               Agenda
+            </Link>
+            <Link
+              className={clsx(
+                'text-slate-700 hover:text-primary transition-colors text-sm font-bold uppercase tracking-widest',
+                pathname === '/musicas' ? 'border-b-2 border-muted-orange' : ''
+              )}
+              href="/musicas"
+            >
+              Músicas
             </Link>
           </nav>
           <div className="flex items-center gap-4">

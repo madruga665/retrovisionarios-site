@@ -38,3 +38,6 @@ next-env.d.ts
 /src/generated/client
 
 .env
+
+/.gemini/
+/.agent/
