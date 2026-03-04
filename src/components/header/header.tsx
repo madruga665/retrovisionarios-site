@@ -53,6 +53,7 @@ export function Header() {
                     : ''
                 )}
                 href="/musicas"
+                onClick={closeMenu}
               >
                 Músicas
               </Link>
