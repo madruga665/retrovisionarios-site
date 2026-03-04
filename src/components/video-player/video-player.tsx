@@ -6,7 +6,7 @@ type VideoPlayerProps = {
 
 export function VideoPlayer({ title, subTitle, videoSrc }: VideoPlayerProps) {
   return (
-    <div className="group video-card-hover relative cursor-pointer min-w-[320px] md:min-w-[480px] shrink-0">
+    <div className="group relative cursor-pointer min-w-[320px] md:min-w-[480px] shrink-0">
       <div className="relative aspect-video w-full rounded-2xl overflow-hidden shadow-xl">
         <iframe
           className="w-full h-full"
