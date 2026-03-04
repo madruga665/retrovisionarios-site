@@ -18,31 +18,3 @@ body {
     text-wrap: balance;
   }
 }
-
-.grainy-overlay {
-    position: relative;
-}
-.grainy-overlay::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuCFFNTaVhduyuiT6j3kpujCuhJe9FDR1DHd01IayJISbiuKhbdnXVMj_RwYCGrQeNKLW-B6s5L7vr7yZSFwWznKwYL_QFiFP6CNVIZh_1RpwXDHzj8FEZWH2LEur5KVQMt_qp9uxuTFdYPmSqaS8U2ImemKxmem2uqjazPwv0lAe89otVur1NVfyg7RdQzswqSoot6wmQ48zifWw4tCRayUsFN6CsJqvW1hLyTGHbNNjDRagrQk1ynwFobPNMdXyu1LZQ3p6SfxgnE_);
-    opacity: 0.12;
-    pointer-events: none;
-    z-index: 5;
-}
-.video-card-hover:hover .play-icon {
-    transform: scale(1.1);
-    background-color: #e67e51;
-}
-.carousel-track::-webkit-scrollbar {
-    display: none;
-}
-.carousel-track {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-    scroll-behavior: smooth;
-}

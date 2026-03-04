@@ -3,32 +3,28 @@
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { VideoPlayer } from '../video-player/video-player';
 import { useRef } from 'react';
-
-type VideoMusic = {
-  id: number;
-  title: string;
-  subtitle: string;
-  videoSrc: string;
-};
+import { Video } from '@/types/video';
 
 type CarouselProps = {
   title: string;
-  videoMusic: VideoMusic[];
+  videoMusic: Video[];
 };
 
 export function Carousel({ title, videoMusic }: CarouselProps) {
-  const hasVideoMusic = videoMusic && videoMusic.length === 0;
+  const hasVideoMusic = videoMusic.length === 0;
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const scroll = (direction: 'left' | 'right') => {
     if (scrollRef.current) {
       const { current } = scrollRef;
-      const scrollAmount = 332;
+      const scrollAmount = scrollRef.current.firstElementChild?.clientWidth;
 
-      current.scrollBy({
-        left: direction === 'left' ? -scrollAmount : scrollAmount,
-        behavior: 'smooth',
-      });
+      if (scrollAmount) {
+        current.scrollBy({
+          left: direction === 'left' ? -scrollAmount : scrollAmount,
+          behavior: 'smooth',
+        });
+      }
     }
   };
 
@@ -68,10 +64,7 @@ export function Carousel({ title, videoMusic }: CarouselProps) {
           </p>
         </div>
       ) : (
-        <div
-          className="carousel-track flex overflow-x-auto gap-8 pb-4"
-          ref={scrollRef}
-        >
+        <div className="flex overflow-x-auto gap-8 pb-4" ref={scrollRef}>
           {videoMusic.map(({ id, title, subtitle, videoSrc }) => {
             return (
               <VideoPlayer

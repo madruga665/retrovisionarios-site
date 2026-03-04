@@ -7,12 +7,18 @@ type VideoPlayerProps = {
 export function VideoPlayer({ title, subTitle, videoSrc }: VideoPlayerProps) {
   return (
     <div className="group video-card-hover relative cursor-pointer min-w-[320px] md:min-w-[480px] shrink-0">
-      <div className="relative aspect-video w-[320] rounded-2xl overflow-hidden shadow-xl grainy-overlay bg-slate-200">
+      <div className="relative aspect-video w-full rounded-2xl overflow-hidden shadow-xl">
         <iframe
           className="w-full h-full"
-          src={videoSrc}
+          src={
+            videoSrc.startsWith('https://www.youtube.com/embed/')
+              ? videoSrc
+              : ''
+          }
+          title={title}
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
+          sandbox="allow-scripts allow-same-origin allow-presentation"
         ></iframe>
       </div>
       <div className="mt-4">
