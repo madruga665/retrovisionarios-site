@@ -16,6 +16,9 @@ const splineSans = Spline_Sans({
 
 export const metadata: Metadata = {
   title: 'Retrovisionários',
+  verification: {
+    google: 'GpI8s7VCvfKyjLY-6B33ZLxcz_--Edub-6pkpa8RlhU',
+  },
 };
 
 export default function RootLayout({
