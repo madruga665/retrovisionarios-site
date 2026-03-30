@@ -1,5 +1,8 @@
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
+import { faro } from '@grafana/faro-web-sdk';
 
 type SocialNetworkCardProps = {
   url: string;
@@ -14,11 +17,19 @@ export function SocialNetworkCard({
   icon,
   description,
 }: SocialNetworkCardProps) {
+  const handleClick = () => {
+    faro.api.pushEvent('social_card_click', {
+      platform: label,
+      url: url,
+    });
+  };
+
   return (
     <Link
       className="group relative flex flex-col items-center gap-6 bg-white p-8 rounded-xl border-2 border-slate-100 hover:border-primary/50 transition-all hover:-translate-y-1 shadow-sm hover:shadow-xl"
       href={url}
       target="_blank"
+      onClick={handleClick}
     >
       <div className="rounded-full bg-slate-50 p-6 group-hover:bg-primary/10 transition-colors">
         <span className="material-symbols-outlined text-4xl text-slate-700 group-hover:text-primary">
