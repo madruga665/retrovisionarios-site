@@ -1,10 +1,10 @@
-/* eslint-disable react/jsx-no-comment-textnodes */
 import type { Metadata } from 'next';
 import { Analytics } from '@vercel/analytics/react';
 import './globals.css';
 import { Header } from '@/components/header/header';
 import { Footer } from '@/components/footer/footer';
 import { Spline_Sans } from 'next/font/google';
+import { FaroMonitoring } from '@/components/faro-monitoring/faro-monitoring';
 
 // Configure the font loader
 const splineSans = Spline_Sans({
@@ -17,7 +17,7 @@ const splineSans = Spline_Sans({
 export const metadata: Metadata = {
   title: 'Retrovisionários',
   verification: {
-    google: 'GpI8s7VCvfKyjLY-6B33ZLxcz_--Edub-6pkpa8RlhU',
+    google: process.env.GOOGLE_SEARCH_CONSOLE_ID,
   },
 };
 
@@ -29,11 +29,12 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body className={`${splineSans.variable} font-sans antialiased`}>
+        <FaroMonitoring />
         <Header />
         <div className="pt-6">{children}</div>
         <Footer />
+        <Analytics />
       </body>
-      <Analytics />
     </html>
   );
 }
