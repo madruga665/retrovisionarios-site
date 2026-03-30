@@ -8,6 +8,7 @@ import {
   faro,
 } from '@grafana/faro-web-sdk';
 import { TracingInstrumentation } from '@grafana/faro-web-tracing';
+import { version, name } from '../../../package.json';
 
 function FaroEvents() {
   const pathname = usePathname();
@@ -48,8 +49,8 @@ export function FaroMonitoring() {
       initializeFaro({
         url: process.env.NEXT_PUBLIC_FARO_URL || '',
         app: {
-          name: 'retrovisionarios-site',
-          version: '1.0.0',
+          name: name,
+          version: version,
           environment: process.env.NODE_ENV,
         },
         instrumentations: [

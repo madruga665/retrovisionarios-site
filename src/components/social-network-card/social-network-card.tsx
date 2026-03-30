@@ -18,7 +18,7 @@ export function SocialNetworkCard({
   description,
 }: SocialNetworkCardProps) {
   const handleClick = () => {
-    faro.api.pushEvent('social_card_click', {
+    faro.api?.pushEvent('social_card_click', {
       platform: label,
       url: url,
     });
